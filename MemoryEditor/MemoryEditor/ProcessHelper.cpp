@@ -2,9 +2,6 @@
 #include <cstdint>
 #include <TlHelp32.h>
 #include <windows.h>
-#include <stdio.h>
-#include <tchar.h>
-#include <windows.h>
 #include <iostream>
 
 uintptr_t GetProcessID(const wchar_t* modName)

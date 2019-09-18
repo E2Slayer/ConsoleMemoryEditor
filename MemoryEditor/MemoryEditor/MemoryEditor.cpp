@@ -60,6 +60,10 @@ void PrintProcessNameAndID(DWORD processID)
 
 void Enum_Processes()
 {
+	system("cls"); // clear the console
+	std::cout << "===============================" << std::endl;
+	std::cout << "List of the Current Processes" << std::endl;
+	std::cout << "===============================" << std::endl;
 	DWORD aProcesses[1024], cbNeeded, cProcesses;
 	unsigned int i;
 
@@ -82,25 +86,14 @@ void Enum_Processes()
 			PrintProcessNameAndID(aProcesses[i]);
 		}
 	}
-	/*
-	wprintf(L"Start:\n");
-	HANDLE hndl = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS | TH32CS_SNAPMODULE, 0);
-	if (hndl)
+	std::cout << "===============================" << std::endl;
+	std::cout << "Enter 1 to Go Back" << std::endl;
+	std::cout << "===============================" << std::endl;
+	int userInput = 0;
+	while (userInput != 1)
 	{
-		PROCESSENTRY32  process = { sizeof(PROCESSENTRY32) };
-		
-		Process32First(hndl, &process);
-		
-		do
-		{
-			//process.szExeFile
-			wprintf(L"%8u, %s\n", process.th32ProcessID, process.szExeFile);
-		} while (Process32Next(hndl, &process));
-
-		CloseHandle(hndl);
+		std::cin >> userInput;
 	}
-	*/
-
 }
 
 HANDLE Attach_Process()
@@ -135,13 +128,11 @@ HANDLE Attach_Process()
 
 int main()
 {
-    std::cout << "Hello World!\n";
 	HANDLE handle = nullptr;
 	int userInput = 0;
 	while (userInput != 9 && handle == nullptr)
 	{
 		system("cls");
-		std::cout << "===============================" << std::endl;
 		std::cout << "===============================" << std::endl;
 		std::cout << "0 : Display a list of processes" << std::endl;
 		std::cout << "1 : Attach a Process" << std::endl;
@@ -171,12 +162,13 @@ int main()
 
 	if(handle)
 	{
-		
+
+		// Display the file directory of the current attached handle 
 		TCHAR buffer[MAX_PATH];
 		GetModuleFileNameEx(handle, NULL, buffer, sizeof(buffer) / sizeof(TCHAR));
+		_tprintf(TEXT("%s \n"), buffer); 
 
-		//std::cout << "name " << buffer << std::endl;
-		_tprintf(TEXT("%s \n"), buffer);
+		
 		/*
 		while (userInput != 9 )
 		{
@@ -192,44 +184,4 @@ int main()
 	
 
 	return 0;
-
-	/*
-		// Get the list of process identifiers.
-
-	DWORD aProcesses[1024], cbNeeded, cProcesses;
-	unsigned int i;
-
-	if (!EnumProcesses(aProcesses, sizeof(aProcesses), &cbNeeded))
-	{
-		return 1;
-	}
-
-
-	// Calculate how many process identifiers were returned.
-
-	cProcesses = cbNeeded / sizeof(DWORD);
-
-	// Print the name and process identifier for each process.
-
-	for (i = 0; i < cProcesses; i++)
-	{
-		if (aProcesses[i] != 0)
-		{
-			PrintProcessNameAndID(aProcesses[i]);
-		}
-	}
-
-	return 0;
-	*/
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
