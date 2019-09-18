@@ -190,8 +190,7 @@ int main()
 			case 0:
 				break;
 			case 1:
-				//uintptr_t temp = g_ModuleBase + 0x4f;
-				ReadMemory(handle, 0, temp);
+				ProcessReadMemory(handle, g_ModuleBase);
 				break;
 			case 2:
 

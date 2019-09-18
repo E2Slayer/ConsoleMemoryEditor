@@ -3,3 +3,4 @@
 #include <cstdint>
 
 void ReadMemory(HANDLE& handle, uintptr_t moduleBase, uintptr_t& address);
+void ProcessReadMemory(HANDLE& handle, uintptr_t moduleBase);
