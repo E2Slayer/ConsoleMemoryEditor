@@ -3,18 +3,16 @@
 #pragma comment( lib, "psapi.lib" )
 #include <iostream>
 #include <windows.h>
-#include <stdio.h>
 #include <tchar.h>
 #include <psapi.h>
 
-#define UNICODE
-#include <Windows.h>
-#include <stdio.h>
-#include <psapi.h>
-#include <tlhelp32.h>
 #include <string>
 #include "ProcessHelper.h"
 #include <sstream>
+#include "ReadWrite.h"
+
+
+uintptr_t g_ModuleBase = 0;
 
 // Code from https://docs.microsoft.com/en-us/windows/win32/psapi/enumerating-all-processes
 // To ensure correct resolution of symbols, add Psapi.lib to TARGETLIBS
@@ -113,9 +111,9 @@ HANDLE Attach_Process()
 	std::wstring widestr = std::wstring(pName.begin(), pName.end());
 	const wchar_t* st = widestr.c_str();
 	
-	uintptr_t base = GetModuleBase(st);
-
-	std::cout << "[Log] The Base Address - " << std::hex << "0x" << base << std::endl;
+	g_ModuleBase = GetModuleBase(st);
+	//g_ModuleBase = base;
+	std::cout << "[Log] The Base Address - " << std::hex << "0x" << g_ModuleBase << std::endl;
 
 
 	//Get Handle to Process
@@ -166,22 +164,52 @@ int main()
 		// Display the file directory of the current attached handle 
 		TCHAR buffer[MAX_PATH];
 		GetModuleFileNameEx(handle, NULL, buffer, sizeof(buffer) / sizeof(TCHAR));
-		_tprintf(TEXT("%s \n"), buffer); 
+		std::cout << "===============================" << std::endl;
+		std::cout << "Attached File" << std::endl;
+		std::cout << "===============================" << std::endl;
+		_tprintf(TEXT("%s \n"), buffer);
+		std::cout << "===============================" << std::endl;
+		userInput = 0;
 
-		
-		/*
-		while (userInput != 9 )
+		while (userInput != 9)
 		{
-			
+			std::cout << "===============================" << std::endl;
+			std::cout << "0 : Memory Search" << std::endl;
+			std::cout << "1 : Read Memory" << std::endl;
+			std::cout << "2 : Write Memory" << std::endl;
+			std::cout << "3 : Saved List" << std::endl;
+			std::cout << "===============================" << std::endl;
+			std::cout << "9 : Exit" << std::endl;
+			std::cout << "===============================" << std::endl;
+			std::cout << "Please, enter a number : ";
+			std::cin >> userInput;
+			uintptr_t temp = g_ModuleBase + 0x4f;
+			//ReadMemory(handle, 0, temp);
+			switch (userInput)
+			{
+			case 0:
+				break;
+			case 1:
+				//uintptr_t temp = g_ModuleBase + 0x4f;
+				ReadMemory(handle, 0, temp);
+				break;
+			case 2:
 
+				break;
+			case 3:
+
+				break;
+			default:
+				break;
+			}
 		}
-		*/
+
 	}
 	else
 	{
 		
 	}
 	
-
+	CloseHandle(handle);
 	return 0;
 }
