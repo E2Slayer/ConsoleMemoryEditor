@@ -193,7 +193,7 @@ int main()
 				ProcessReadMemory(handle, g_ModuleBase);
 				break;
 			case 2:
-
+				ProcessWriteMemory(handle, g_ModuleBase);
 				break;
 			case 3:
 
