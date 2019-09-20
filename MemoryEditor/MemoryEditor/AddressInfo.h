@@ -21,6 +21,6 @@ public:
 	Types type = Types::None;
 
 
-	AddressInfo(uintptr_t add);
+	AddressInfo();
 };
 

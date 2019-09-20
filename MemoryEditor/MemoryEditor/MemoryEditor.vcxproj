@@ -155,11 +155,13 @@
     <ClCompile Include="MemoryEditor.cpp" />
     <ClCompile Include="ProcessHelper.cpp" />
     <ClCompile Include="ReadWrite.cpp" />
+    <ClCompile Include="SavedList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddressInfo.h" />
     <ClInclude Include="ProcessHelper.h" />
     <ClInclude Include="ReadWrite.h" />
+    <ClInclude Include="SavedList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

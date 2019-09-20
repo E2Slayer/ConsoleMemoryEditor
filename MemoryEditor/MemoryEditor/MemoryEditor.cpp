@@ -11,6 +11,7 @@
 #include <sstream>
 #include "ReadWrite.h"
 #include "AddressInfo.h"
+#include "SavedList.h"
 
 
 uintptr_t g_ModuleBase = 0;
@@ -186,8 +187,10 @@ int main()
 
 			std::cin >> userInput;
 			uintptr_t temp = g_ModuleBase + 0x4f;
-			AddressInfo a = AddressInfo(temp);
+			//AddressInfo a = AddressInfo(temp);
 			//ReadMemory(handle, 0, temp);
+			//
+			SavedList t = SavedList();
 			switch (userInput)
 			{
 			case 0:
@@ -200,7 +203,8 @@ int main()
 				break;
 			case 3:
 				
-				std::cout << "Heeey : " << std::hex << a.address << std::endl;
+				t.ShowAllList();
+				//std::cout << "Heeey : " << std::hex << a.address << std::endl;
 				break;
 			default:
 				break;

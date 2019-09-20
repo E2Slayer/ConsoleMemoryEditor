@@ -1,14 +1,14 @@
 #include "AddressInfo.h"
 
 
-	std::string description = "No Description";
-	uintptr_t address = 0x0;
-	Types type = Types::None;
+std::string description = "No Description";
+uintptr_t address = 0x0;
+Types type = Types::None;
 
 
-	AddressInfo::AddressInfo(uintptr_t add) : address(add)
-	{
+AddressInfo::AddressInfo()
+{
 
-	}
+}
 
 

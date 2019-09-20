@@ -3,6 +3,7 @@
 #include <windows.h>
 #include <iostream>
 #include <vector>
+#include "SavedList.h"
 
 
 void ReadMemory(HANDLE &handle, uintptr_t &address)
@@ -26,7 +27,7 @@ void ProcessReadMemory(HANDLE& handle, uintptr_t moduleBase)
 	uintptr_t temp = moduleBase + add;
 	ReadMemory(handle, temp);
 	// TODO add as hex not decimal 
-
+	SaveAddress(temp);
 	
 }
 
@@ -109,8 +110,24 @@ void ProcessWriteMemory(HANDLE& handle, uintptr_t moduleBase)
 	std::cout << "Please, enter a new value : ";
 	std::cin >> std::dec >> value;
 	WriteMemory(handle, add, value);
-	// TODO add as hex not decimal 
+	// TODO add as hex not decimal
 
+	SaveAddress(add);
+
+}
+
+void SaveAddress(uintptr_t add)
+{
+	int value = 0;
+	std::cout << "Do you want to save it? (0: Yes / 1: No) : ";
+	std::cin >> std::dec >> value;
+
+	if(value == 0)
+	{
+		auto t = SavedList();
+		t.SaveAnAddress(add, "test", Types::Byte4);
+		//SavedList::SaveAnAddress(add, "test", Types::Byte4);
+	}
 }
 
 uintptr_t MultiLevelPointer(HANDLE handle, uintptr_t address, const std::vector<uintptr_t> &levels)
