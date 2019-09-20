@@ -124,8 +124,20 @@ void SaveAddress(uintptr_t add)
 
 	if(value == 0)
 	{
+
+
+		std::string str = "No Description";
+		std::cout << "Description of this address : ";
+		//std::getline(std::cin, str);
+		std::cin >> str;
+
+		
+		std::cout << "What kind of Type is it ? (0: Byte / 1: 2 Bytes / 2: 4 Bytes) : ";
+		std::cin >> std::dec >> value;
+
+		
 		auto t = SavedList();
-		t.SaveAnAddress(add, "test", Types::Byte4);
+		t.SaveAnAddress(add, str, Types(value));
 		//SavedList::SaveAnAddress(add, "test", Types::Byte4);
 	}
 }

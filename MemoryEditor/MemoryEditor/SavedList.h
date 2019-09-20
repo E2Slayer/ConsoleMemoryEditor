@@ -16,5 +16,11 @@ public:
 	void SaveAnAddress(uintptr_t add, std::string str, Types type);
 
 	void ShowAllList();
+
+	void AddAList();
+	
+	void EditAList(int num);
+
+	void DeleteAList(int num);
 };
 
