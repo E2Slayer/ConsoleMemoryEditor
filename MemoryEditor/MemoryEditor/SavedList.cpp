@@ -22,6 +22,7 @@ void SavedList::ShowAllList()
 		for (auto i : savedList)
 		{
 			std::cout << "[" << i_Number << "] = " "Address : " << std::hex << i->address << " / Description : " << i->description << " / Types " << std::dec << i->type << std::endl;
+			++i_Number;
 		}
 		
 		std::cout << "===============================" << std::endl;
@@ -40,7 +41,7 @@ void SavedList::ShowAllList()
 		}
 
 
-		
+		int num = 0;
 		switch (userInput)
 		{
 		case 0:
@@ -49,16 +50,14 @@ void SavedList::ShowAllList()
 
 			break;
 		case 1:
-			int num = 0;
 			std::cout << "Which one do you want to modify? : ";
 			std::cin >> std::dec >> num;
 			--num;
 			EditAList(num);
 			break;
 		case 2:
-			int num2 = 0;
 			std::cout << "Which one do you want to Delete? : ";
-			std::cin >> std::dec >> num2;
+			std::cin >> std::dec >> num;
 			--num;
 			DeleteAList(num);
 			break;
@@ -77,7 +76,7 @@ void SavedList::AddAList()
 	uintptr_t temp = 0x0;
 	std::cout << "New Address : ";
 	//std::getline(std::cin, str);
-	std::cin >> temp;
+	std::cin >> std::hex >> temp;
 
 	std::string str = "No Description";
 	std::cout << "Description of this address : ";
