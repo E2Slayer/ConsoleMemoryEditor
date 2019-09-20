@@ -21,10 +21,10 @@
     <ClCompile Include="ProcessHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MemorySearch.cpp">
+    <ClCompile Include="ReadWrite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ReadWrite.cpp">
+    <ClCompile Include="AddressInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,10 +32,10 @@
     <ClInclude Include="ProcessHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MemorySearch.h">
+    <ClInclude Include="ReadWrite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ReadWrite.h">
+    <ClInclude Include="AddressInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

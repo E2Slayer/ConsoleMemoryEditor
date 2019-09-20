@@ -10,6 +10,7 @@
 #include "ProcessHelper.h"
 #include <sstream>
 #include "ReadWrite.h"
+#include "AddressInfo.h"
 
 
 uintptr_t g_ModuleBase = 0;
@@ -182,8 +183,10 @@ int main()
 			std::cout << "9 : Exit" << std::endl;
 			std::cout << "===============================" << std::endl;
 			std::cout << "Please, enter a number : ";
+
 			std::cin >> userInput;
 			uintptr_t temp = g_ModuleBase + 0x4f;
+			AddressInfo a = AddressInfo(temp);
 			//ReadMemory(handle, 0, temp);
 			switch (userInput)
 			{
@@ -196,7 +199,8 @@ int main()
 				ProcessWriteMemory(handle, g_ModuleBase);
 				break;
 			case 3:
-
+				
+				std::cout << "Heeey : " << std::hex << a.address << std::endl;
 				break;
 			default:
 				break;

@@ -151,13 +151,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AddressInfo.cpp" />
     <ClCompile Include="MemoryEditor.cpp" />
-    <ClCompile Include="MemorySearch.cpp" />
     <ClCompile Include="ProcessHelper.cpp" />
     <ClCompile Include="ReadWrite.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MemorySearch.h" />
+    <ClInclude Include="AddressInfo.h" />
     <ClInclude Include="ProcessHelper.h" />
     <ClInclude Include="ReadWrite.h" />
   </ItemGroup>
